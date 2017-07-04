@@ -87,7 +87,7 @@ static LRESULT CALLBACK windowWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARA
 		runMenuEvent(LOWORD(wParam), uiWindow(w));
 		return 0;
 	case WM_WINDOWPOSCHANGED:
-		if ((wp->flags & SWP_NOSIZE) != 0)
+		if ((wp->flags & SWP_NOSIZE) != 0 || LOWORD(wParam) <= IDCANCEL)
 			break;
 		windowRelayout(w);
 		return 0;
